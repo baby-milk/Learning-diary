@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/iconfont.css">
+    <style>
+        #main {
+            width: 800px;
+            height: 500px;
+            background: rgb(255, 0, 255);
+            border: 10px solid rgb(255, 0, 255);
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -80%);
+            border-radius: 2%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left {
+            width: 300px;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 2%;
+            overflow: auto;
+            font-size: 18px;
+            line-height: 32px;
+        }
+
+        .middle {
+            width: 150px;
+            height: 100px;
+            background: #fff;
+            border-radius: 5%;
+            margin-top: -50px;
+            font-size: 20px;
+            background: rgb(73, 211, 253);
+            color: #fff;
+        }
+
+        .right {
+            width: 300px;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 2%;
+            overflow: auto;
+            font-size: 18px;
+            line-height: 32px;
+        }
+
+        #main div {
+            float: left;
+        }
+
+        .p_top {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .p_bottom {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, 100%);
+        }
+
+        .icon-jiantou {
+            font-size: 36px;
+            font-weight: 700;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="left">
+            迪丽热巴（Dilraba），1992年6月3日出生于新疆乌鲁木齐市，中国内地影视女演员、歌手，毕业于上海戏剧学院。
+            2013年，迪丽热巴因主演个人首部电视剧《阿娜尔罕》而出道 [1] 。2014年，她主演了奇幻剧《逆光之恋》 [2] 。
+            2015年，迪丽热巴凭借爱情剧《克拉恋人》赢得高人气，并获得国剧盛典最受欢迎新人女演员奖 [3] 。2016年，其主演的现代剧《麻辣变形计》播出 [4]
+            ；同年，迪丽热巴还凭借喜剧片《傲娇与偏见》获得中英电影节最佳新人奖 [5] 。2017年，她凭借玄幻剧《三生三世十里桃花》获得白玉兰奖最佳女配角提名 [6]
+            2018年，迪丽热巴成为了金鹰电视艺术节的第七位“金鹰女神” [7] ，并获得了第29届中国电视金鹰奖观众喜爱的女演员、第12届中国金鹰电视艺术节最具人气女演员两项殊荣 [8] 。
+        </div>
+        <div class="middle">
+            <p class="p_top">
+                <span class="iconfont icon-jiantou"></span>
+                快到碗里来
+            </p>
+            <p class="p_bottom">
+                <span>0</span>/<span>0</span>
+            </p>
+        </div>
+        <div class="right"></div>
+    </div>
+    <script>
+        let main = document.getElementById("main");
+        let divLeft = main.querySelector("#main>.left");
+        let divMiddle = main.querySelector("#main>.middle");
+        let spanLeft = main.querySelectorAll("#main .p_bottom>span")[0];
+        let spanRight = main.querySelectorAll("#main .p_bottom>span")[1];
+        let divRight = main.querySelector("#main>.right");
+        let time;
+        let leftLength=divLeft.innerHTML.length;
+        spanRight.innerHTML = leftLength;
+        spanLeft.innerHTML = leftLength;
+        
+        
+        divMiddle.onclick = function () {
+            clearInterval(time);
+            time = setInterval(change, 10);
+        }
+
+        function change() {
+            var fon = divLeft.innerHTML;
+            var everyOne = fon.substr(0, 1);
+            fon = fon.substr(1, fon.length - 1);
+            var lengt = fon.length;
+            spanLeft.innerHTML = lengt;
+            divLeft.innerHTML = fon;
+            divRight.innerHTML = divRight.innerHTML + everyOne;
+            if (leftLength === divRight.innerHTML.length) {
+                clearInterval(time);
+            }
+        }
+    </script>
+</body>
+
+</html>
