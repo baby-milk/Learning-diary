@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let n = 10;
+        // let m = n.plus(10).minus(5);
+        // console.log(m);//=>15（10+10-5）
+
+        let n = 10;
+        Number.prototype.plus = function (val) {
+            // if (result !== NaN) {
+            //     return this + value;
+            // }else{
+            //     return this;
+            // }
+            return Number(val) === NaN ? this : (this + Number(val));
+        }
+        Number.prototype.minus = function (val) {
+            return Number(val) === NaN ? this : (this - Number(val));
+        }
+        let m = n.plus(10).minus(5);;
+        console.log(m);
+    </script>
+</body>
+
+</html>

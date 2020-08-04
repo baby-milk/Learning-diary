@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //let str = 'asdrawsd' // 找到的字符是 'r'
+        function fun(str) {
+            // arguments.__proto__ = String.prototype
+            // let result = arguments[0].indexOf(arguments[1]);
+            let ary = str.split("");
+            console.log(result);
+            for (let i = 0; i < ary.length; i++) {
+                if (str.indexOf(ary[i]) === str.lastIndexOf(ary[i])) {
+                    return ary[i];
+                }
+            }
+            return null;
+        }
+        let str = "asdrawsd";
+        console.log(fun(str));
+    </script>
+</body>
+
+</html>

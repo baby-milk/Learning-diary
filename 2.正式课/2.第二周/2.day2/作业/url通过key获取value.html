@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var url = "locallhost?key1=val1&key2=val2&key3=val3";
+        // console.log(url.getParam("key3")); //=>'val3'
+        let url = "locallhost?key1=val1&key2=val2&key3=val3";
+        function getParam(value) {
+            let u = url.split("?")[1].split("&");
+            let result = null;
+            for (let i = 0; i < u.length; i++) {
+                let left = u[i].split("=");
+                if (left[0] === value) {
+                    result = left[1];
+                }
+            }
+            return result;
+        }
+
+        console.log(getParam("key1"));
+    </script>
+</body>
+
+</html>
