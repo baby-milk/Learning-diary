@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个方法，用来实现得到当前每一次捕获的大内容和分组捕获的小内容
+
+        let reg = /(\d){2}/g;
+        let ary = 'qw22eq23rq56t';
+        function myMatch(value) {
+            let bigAry = [];
+            let smallAry = [];
+            let res = value.exec(this);
+            if (!value.global) {
+                return res;
+            }
+            while (res) {
+                bigAry.push(res[0]);
+                smallAry.push(res[1]);
+                res = value.exec(this);
+            }
+            return [bigAry, smallAry][0].length === 0 ? null : [bigAry, smallAry];
+        }
+        String.prototype.myMatch = myMatch;
+        console.log(ary.myMatch(reg));
+    </script>
+</body>
+
+</html>
