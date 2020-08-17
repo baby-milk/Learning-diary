@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #main {
+            width: 800px;
+            height: 320px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #box {
+            width: 500%;
+            height: 100%;
+            float: left;
+            position: absolute;
+        }
+
+        img {
+            width: 500px;
+            height: 320px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="box">
+            <img src="./image/1.jpg" alt="">
+            <img src="./image/2.jpg" alt="">
+            <img src="./image/3.jpg" alt="">
+            <img src="./image/4.jpg" alt="">
+            <img src="./image/5.jpg" alt="">
+            <img src="./image/6.jpg" alt="">
+        </div>
+    </div>
+    <script src="../../jquery-1.11.3.js"></script>
+    <script>
+        let num = 0;
+        function run() {
+            num -= 1;
+            let $img = $('img').innerWidth();
+            if (Math.abs(num) >= $img) {
+                num = num + $('img').innerWidth();
+                $("img").eq(0).insertAfter($("img").eq(5));
+            }
+            $('#box').css({
+                left: num
+            })
+        }
+
+        setInterval(run, 15);
+    </script>
+</body>
+
+</html>
