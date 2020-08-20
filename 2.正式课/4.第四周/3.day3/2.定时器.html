@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 当浏览器解析到12行时，浏览器会记录一下当前的时间，等过了100ms以后，会让回调函数执行；
+        // 定时器的返回值: 1
+        // 返回值代表的是当前js中第几个定时器；
+        // typeof setTimeout==> "function"
+        // setTimeout是个函数
+        // function fn(){
+        //     let a = setTimeout(function(){
+        //     },100);
+        // }
+        // let b = setInterval(function(){},300);
+        // fn();
+
+        // 清除定时器
+        // clearTimeout  clearInterval
+        // clearTimeout(b)
+        
+        // 浏览器有最小的识别时间
+        // setInterval(function(){
+
+        // },6)
+        // setTimeout(function(a,b){// a,b 是形参；
+        //     console.log(a,b);
+        // },2000,1,2);
+    </script>
+</body>
+</html>

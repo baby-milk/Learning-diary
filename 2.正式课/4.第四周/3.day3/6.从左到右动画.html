@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius: 50%;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="left:0px"></div>
+    <script>
+        // 动画： 通过定时器让盒子不断改变它的位置；控制它的定位left或top值；
+        // 只敲代码
+        // 通过定时器每隔20ms,让盒子的left+10;
+        let box = document.getElementById("box");
+        let maxL = document.documentElement.clientWidth - box.offsetWidth;
+        // 给盒子绑定一个点击事件
+        box.onclick = function(){ 
+            let timer = setInterval(function(){
+                // 每隔20ms执行一次；
+                // 首先需要获取到盒子当前的位置；
+                // 第一个是字符串，带单位；
+                let curLeft = parseFloat(box.style.left);
+                curLeft+=10;
+                // 1205  1200+ 1210
+                if(curLeft>=maxL){
+                    // 定时器虽然清除了，但是本次函数一定要执行完；
+                    clearInterval(timer);
+                    timer=null;// 定时器timer赋值为null 
+                    // 把最大、最准确值赋值给curLeft
+                    curLeft=maxL;
+                }
+                box.style.left = curLeft+"px";
+            },20);
+        }
+
+    
+    </script>
+</body>
+</html>

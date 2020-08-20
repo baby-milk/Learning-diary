@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 解决层层的回调，层层回调也叫回调地狱；
+        // // 
+        // let  newData=[];
+        // $.ajax({
+        //     url:"list.json",
+        //     async:true,
+        //     success:function(data){
+        //         $.ajax({
+        //             url:"order.json",
+        //             success:function(data){
+        //                 $.ajax({
+        //                     url:""
+        //                 })
+        //             }
+        //         })
+        //     }
+        // });
+        // 有两个请求，第二个请求需要第一个请求回来的数据作为参数，才能发送第二个；
+        
+        
+
+
+        // Promise是一个类
+        // pending  fulfilled  rejected 
+        // Promise : 是异步编程的一种解决方案；
+        // let  p1 = new Promise(function(resolve,reject){
+        //     // 同步的
+        //     // resolve 和reject 是函数，来控制状态；
+        //     resolve(100);
+        //     // rejecte();
+        // });
+        // p1是Promise的实例；在Promise的原型上有个then方法；
+        // 执行的位置是实参，定义的位置是形参；
+        // then 是执行了的，如果就是pending状态，then的两个实参都不执行;
+        // then :
+        //1. 状态从pending==>fulfilled 第一个函数执行，pending==>rejected 第二个函数执行
+        //2.then绑定的函数是异步的；
+        //3.resolve执行传递过来的实参，会传给then的形参函数；
+        //4.p.then 的返回值也是一个promise的实例，所以可以链式调用then方法；
+        // 第一个请求成功以后，才能执行第二个请求，第二个请求成功，才能执行第三个
+        // 每一个then都有一个成功的回调和失败的回调；
+        // p1.then().then(function(){
+        // },function(){
+        // }).then(function(){
+        // })
+        // console.log(p1);
+
+        let p1 = new Promise(function(resolve,reject){
+            // 这个函数执行时同步的；但是里面可以有异步任务
+            // $.ajax({
+            //     url:"",
+            //     success:function(data){
+            //         // 这是一个异步
+            //         resolve(data)
+            //     }
+            // })
+            // resolve();
+            // reject()
+            // 1.执行reject 变成失败
+            // 2.该函数函数中代码报错；但是控制台不会显示报错；只会让then的失败函数执行
+            // console.log(a);
+            // resolve();
+            reject();
+        });
+        // then返回的promise实例，会默认从pending到fulfilled;所以第三个then不管执行的是resolve还是reject 都是成功态；
+        // resolve 和reject只能控制下一个then绑定的回调；
+        // 如果在then的回调中返回了promise实例，那么下一个then会受返回的这个promise的状态的影响；
+        p1.then(function(){
+            console.log("成功1");
+            return new Promise(function(resolve,reject){
+                reject();
+            });
+        },function(){
+            console.log("失败1");
+        }).then(function(){
+            console.log("成功2")
+        },function(){
+            console.log("失败2")
+        });
+
+
+
+        
+
+    
+    
+    </script>
+</body>
+</html>

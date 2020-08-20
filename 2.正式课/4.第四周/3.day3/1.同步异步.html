@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数据类型
+        // a 是什么数据类型的;
+        // a是属性名，是天生字符串类型的，
+        // 属性值一定是咱们学过的数据类型的一种；
+        // var a = 1;
+        // var b = c;
+        // var  obj = {a:a,b:100,c:200};
+        // console.log(obj.a)// 1
+        // console.log(obj.b)
+
+
+        // 作用域 
+
+
+        // 面向对象 
+
+
+        // 同步异步：
+        // 进程和线程： 一个进程可以包含好多线程；
+        // 浏览器：多线程的；可以同时执行多个任务；
+        // JS ：单线程的；js运行同一时间只能执行一行代码；
+
+        // 定时器是异步的；
+        // 记录一个开始时间，过了10ms之后，让这个函数执行；
+        // 当JS在解析代码时，当异步的代码时，会把这个异步的任务放到等待队列中；遇到同步的代码，会放在主任务队列中，当主任务队列的代码都执行完以后，才会执行等待任务队列中的代码；
+        // 当JS解析异步代码时，不会在此等待，而是继续执行下面的代码；
+        // setTimeout   setInterval   ajax   promise的then async await  事件
+        // 当同步代码执行完以后，会执行异步任务中的代码，会让先到达目标时间的任务的先执行
+        // setTimeout(function(){
+        //     console.log(100);
+        // },10);
+        // setTimeout(function(){
+        //     console.log(200);
+        // },10);
+        // let cur = Date.now();
+        // for(let i=0;i<100000000;i++){
+        // }
+        // let  val= Date.now()-cur;
+        // console.log(val);
+
+
+        // 当同步代码执行完以后，会去等待队列中找最先到达执行时间的异步任务，让其执行；
+        // ajax  xhr.open("get","list.json",true)
+        // let data;
+        // ajax : 是浏览器向服务器请求数据的；
+        // setTimeout(function(){
+        //     console.log(100);
+        // },10);
+        // for(let i=0;i<100000000;i++){
+        // }
+        // setTimeout(function(){
+        //     console.log(200);
+        // },8);
+        // console.log(300);
+
+        setTimeout(()=>{
+            console.log(ss); 
+        },1000);
+        let ss = 1000;
+        
+
+
+    
+    
+    
+    
+    </script>
+</body>
+</html>
