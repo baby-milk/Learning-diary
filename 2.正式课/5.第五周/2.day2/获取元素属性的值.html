@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box aa"></div>
+    <div class="box bb"></div>
+    <div class="box cc"></div>
+    <script>
+        /* 实现一个$attr(name,value)遍历
+    *    属性为name
+    *    值为value的元素集合
+    * 例如下面示例:
+    */
+        // let ary = $attr('class', 'box'); //=>获取页面中所有class为box的元素
+        // let ary = $attr('ss', 'box'); //=>获取页面中所有class为box的元素
+        // [div.box ,li,img]
+
+        function $attr(name, value) {
+            let list = document.body.getElementsByTagName("*");
+            console.log(list);
+            let ary = Array.from(list);
+            let res = [];
+            ary.forEach((item, index) => {
+                let val = item.getAttribute(name);
+                if (val === value) {
+                    res.push(item);
+                } else if (name === "class") {
+                    if (eval('/' + value + '/').test(val)) {
+                        res.push(item);
+                    }
+                }
+            });
+            return res;
+        }
+
+        let ary = $attr("class", "box aa");
+        console.log(ary);
+    </script>
+</body>
+
+</html>

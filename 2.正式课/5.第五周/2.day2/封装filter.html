@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // filter(): 对数组中的每一项执行函数，把里面返回 true 的项，组成一个数组返回。
+
+        let ary = [100, 200, 300];
+
+        Array.prototype.myFilter = function (fun) {
+            let array = [];
+            for (let i = 0; i < this.length; i++) {
+                if (fun(this[i], i)) {
+                    array.push(this[i]);
+                }
+            }
+            return array;
+        }
+
+        let res = ary.myFilter(function (item, index) {
+            if (item > 200) {
+                return true;
+            }
+        });
+        console.log(res);
+    </script>
+</body>
+
+</html>

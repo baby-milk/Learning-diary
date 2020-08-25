@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // some(): 对数组中的每一项执行函数，只要有一项返回了 true ,则该方法返回 true。如果都不满足，那就返回false
+
+        let ary = [100, 200, 300];
+
+        Array.prototype.mySome = function (fun) {
+            for (let i = 0; i < this.length; i++) {
+                if (fun(this[i], i)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        ary.mySome(function (item, index) {
+            if (item > 200) {
+                return true;
+            }
+        });
+    </script>
+</body>
+
+</html>

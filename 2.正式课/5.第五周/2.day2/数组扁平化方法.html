@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10];
+        // ary.flatten().unique().sort((a, b) => a - b); //=>[1, 2, 3, 4, 5, 6, 7, 8, 9....]
+
+        // let ary = arr.toString(arr).split(",");
+        // ary = ary.map(function (item,index) { return Number(item) }).sort(function (a, b){return a - b});
+        // console.log(new Set(ary));
+
+        // let ary = arr.flat(Infinity).sort((a,b)=>{return a-b});;
+        // console.log(new Set(ary));
+
+
+        // let ar=new Set(ary);
+        // let res=Array.from(ar);
+        // console.log(res.__proto__);
+
+
+        Array.prototype.flatten = function () {
+            let res = [];
+            let _this = this;
+            console.log(_this);
+            function fun(ary) {
+                for (let i = 0; i < ary.length; i++) {
+                    if (Array.isArray(ary[i])) {
+                        fun(ary[i]);
+                    } else {
+                        res.push(ary[i]);
+                    }
+                }
+            }
+            fun(_this);
+            return res;
+        }
+        console.log(arr.flatten());
+    </script>
+</body>
+
+</html>
