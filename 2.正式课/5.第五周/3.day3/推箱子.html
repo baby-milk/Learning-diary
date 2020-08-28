@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        window.onkeydown = function (name) {
+            let style = getComputedStyle(box);
+            let height = document.documentElement.clientHeight;
+            let width = document.documentElement.clientWidth;
+            console.log(height);
+            switch (name.keyCode) {
+                case 38:
+                    console.log("上");
+                    parseFloat(style.top) - 100 <= 0 ? box.style.top = 0 + "px" : box.style.top = parseFloat(style.top) - 100 + "px";;
+                    break;
+                case 40:
+                    console.log("下");
+                    parseFloat(style.top) + 100 + 100 >= height ? box.style.top = height - 100 + "px" : box.style.top = parseFloat(style.top) + 100 + "px";
+                    break;
+                case 37:
+                    console.log("左");
+                    parseFloat(style.left) - 100 <= 0 ? box.style.left = 0 + "px" : box.style.left = parseFloat(style.left) - 100 + "px";;
+                    break;
+                case 39:
+                    console.log("右");
+                    parseFloat(style.left) + 100 + 100 >= width ? box.style.left = width - 100 + "px" : box.style.left = parseFloat(style.left) + 100 + "px";
+                    break;
+                case 13:
+                    console.log("复位");
+                    box.style.left = 0 + "px";
+                    box.style.top = 0 + "px";
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

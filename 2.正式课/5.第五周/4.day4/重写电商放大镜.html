@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box,
+        #bigBox {
+            width: 600px;
+            height: 360px;
+            position: relative;
+            float: left;
+
+        }
+
+        #box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #bigBox {
+            overflow: hidden;
+        }
+
+        #bigBox img {
+            display: none;
+            width: 1200px;
+            height: 720px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -10;
+        }
+
+        #small {
+            width: 300px;
+            height: 180px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(70, 59, 61, 0.4)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="./image/1.jpg" alt="">
+    </div>
+    <div id="bigBox">
+        <img src="./image/1.jpg" alt="">
+    </div>
+    <script>
+        let box = document.getElementById("box");
+        let bigBox = document.getElementById("bigBox");
+        let bigImg = bigBox.getElementsByTagName("img")[0];
+
+        box.onmouseenter = function () {
+            bigImg.style.display = "block";
+            let small = document.createElement("div");
+            small.id = "small";
+            box.appendChild(small);
+        }
+
+        box.onmousemove = function (e) {
+            let clX = e.clientX - small.offsetWidth / 2;
+            let clY = e.clientY - small.offsetHeight / 2;
+            let minL = 0;
+            let minT = 0;
+
+            let maxL = box.clientWidth - small.offsetWidth;
+            let maxT = box.clientHeight - small.offsetHeight;
+
+            clX < minL ? clX = minL : (clX > maxL ? clX = maxL : null);
+            clY < minT ? clY = minT : (clY > maxT ? clY = maxT : null);
+
+            bigImg.style.left = -(clX / 600 * 1200) + "px";
+            bigImg.style.top = -(clY / 360 * 720) + "px";
+
+            small.style.left = clX + "px";
+            small.style.top = clY + "px";
+        }
+
+
+        box.onmouseleave = function () {
+            bigImg.style.display = "none";
+            box.removeChild(small);
+        }
+    </script>
+</body>
+
+</html>

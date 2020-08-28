@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: pink;
+        }
+        #main{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 300px;
+            top: 500px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="main"></div>
+    <script src="./utils.js"></script>
+    <script>
+        let box = document.getElementById("box");
+        let main = document.getElementById("main");
+        utils.drag(box);
+        utils.drag(main);
+        // let offsetX = 0;
+        // let offsetY = 0;
+        // let flag = false;
+        // box.onmousedown = function (e) {
+        //     offsetX = e.offsetX;
+        //     offsetY = e.offsetY;
+        //     flag = true;
+        // }
+        // box.onmousemove = function (e) {
+        //     if (flag) {
+        //         let left = e.clientX;
+        //         let top = e.clientY;
+        //         box.style.left =left-offsetX+"px";
+        //         box.style.top =top-offsetY+"px";
+        //     }
+        // }
+        // box.onmouseup = function () {
+        //     flag = false;
+        // }
+
+    </script>
+</body>
+
+</html>
