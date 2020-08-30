@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        /**{
+            margin: 0;
+            padding: 0;
+        }*/
+        .box {
+            width: 500px;
+            /*1.角度  颜色*/
+            background: linear-gradient(-45deg, lightseagreen, lightpink, lightblue, lightyellow, lightcoral);
+            background: -webkit-linear-gradient(-45deg, lightseagreen, lightpink, lightblue, lightyellow, lightcoral);
+        }
+
+        .box span {
+            display: block;
+            height: 35px;
+            line-height: 35px;
+            cursor: pointer;
+        }
+
+        .box span.close:before {
+            content: "+";
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .box span.open:before {
+            content: "-";
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="box" id="box">
+        <li><span>第一级菜单</span>
+            <ul>
+                <li><span>第二级菜单</span>
+                    <ul>
+                        <li><span>第三级菜单</span>
+                            <ul>
+                                <li><span>第四级菜单</span></li>
+                                <li><span>第四级菜单</span></li>
+                            </ul>
+                        </li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                    </ul>
+                </li>
+                <li><span>第二级菜单</span>
+                    <ul>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                        <li><span>第三级菜单</span></li>
+                    </ul>
+
+                </li>
+                <li><span>第二级菜单</span>
+                </li>
+                <li><span>第二级菜单</span></li>
+            </ul>
+        </li>
+        <li><span>第一级菜单</span></li>
+        <li><span>第一级菜单</span></li>
+        <li><span>第一级菜单</span></li>
+    </ul>
+
+    <script>
+        let box = document.getElementById("box");
+        let span = document.getElementsByTagName("span");
+        for (let i = 0; i < span.length; i++) {
+            if (span[i].nextElementSibling) {
+                span[i].classList.add("close");
+                span[i].nextElementSibling.style.display = 'none';
+            } else {
+                span[i].classList.add("open");
+            }
+        }
+
+        box.onclick = function (e) {
+            if (e.target.nextElementSibling) {
+                if (e.target.className == "close") {
+                    console.log(1);
+                    e.target.nextElementSibling.style.display = "block";
+                    e.target.className = "open";
+                }else {
+                    let ulList = e.target.parentNode.getElementsByTagName("ul");
+                    for (let i = 0; i < ulList.length; i++) {
+                        ulList[i].style.display = "none";
+                        ulList[i].previousElementSibling.className = "close";
+                    };
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        #box {
+            width: 500px;
+            height: 400px;
+            margin: 200px auto;
+        }
+
+        ul {
+            width: 400px;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul li {
+            float: left;
+            box-sizing: border-box;
+            border: 1px solid red;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #box ol div {
+            width: 400px;
+            height: 200px;
+            text-align: center;
+            border: 1px solid red;
+            box-sizing: border-box;
+            margin-top: -1px;
+            display: none;
+            line-height: 200px;
+        }
+
+        ul .active {
+            border-bottom: 1px solid #ffffff;
+        }
+
+        #box>ol .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box">
+        <ul>
+            <li class="active">鲍鱼</li>
+            <li>海参</li>
+            <li>龙虾</li>
+        </ul>
+        <ol>
+            <div class="active">一堆鲍鱼</div>
+            <div>一堆龙虾</div>
+            <div>一堆海参</div>
+        </ol>
+    </div>
+
+    <script>
+        // let box = document.getElementById("box");
+        // let list = box.getElementsByTagName("li");
+        // let divList = box.getElementsByTagName("div");
+        // for (let i = 0; i < list.length; i++) {
+        //     list[i].onclick = function () {
+        //         for (let j = 0; j < list.length; j++) {
+        //             list[j].classList.remove("active");
+        //             divList[j].classList.remove("active");
+        //         }
+        //         list[i].classList.add("active");
+        //         divList[i].classList.add("active");
+        //     }
+        // }
+
+        function Xuan(ele) {
+            this.ele = ele;
+            this.list = ele.getElementsByTagName("li");
+            this.divList = ele.getElementsByTagName("div");
+            let _this = this;
+            for (let i = 0; i < this.list.length; i++) {
+                this.list[i].onclick = function () {
+                    _this.change(i);
+                }
+            }
+        }
+        Xuan.prototype.change = function (num) {
+            for (let i = 0; i < this.list.length; i++) {
+                this.list[i].classList.remove("active");
+                this.divList[i].classList.remove("active");
+            }
+            this.list[num].classList.add("active");
+            this.divList[num].classList.add("active");
+        }
+
+
+        let box = document.getElementById("box");
+        new Xuan(box);
+
+
+    </script>
+</body>
+
+</html>
